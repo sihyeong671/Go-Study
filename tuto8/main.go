@@ -38,7 +38,7 @@ func dbCall(i int) {
 	var delay float32 = 2000
 	time.Sleep(time.Duration(delay) * time.Microsecond)
 	fmt.Println("The result from the database is:", dbData[i])
-	m.Lock()
+	m.Lock() // 전역변수 혹은 공유메모리 사용하는 경우에 같은 메모리에 접근시 덮어쓰는 경우가 생김
 	results = append(results, dbData[i])
 	m.Unlock()
 	wg.Done()
